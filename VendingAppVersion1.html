@@ -1,0 +1,291 @@
+<div class="vending-wrapper">
+  
+  <h1 class="interactive-title">VENDING CALCULATOR</h1>
+
+  <div class="vending-calc-container">
+    <div class="vending-calc-header">
+      <h3>Calculate Your Investment ☕</h3>
+      <p>Enter your details below to find out your potential profit.</p>
+    </div>
+
+    <div class="vending-calc-body">
+      <div class="input-group">
+        <label for="investment">Initial machine investment (€):</label>
+        <input type="number" id="investment" placeholder="e.g. 1500" min="0">
+      </div>
+
+      <div class="calc-section-title">Machine Condition</div>
+      <div class="radio-group">
+        <label><input type="radio" name="machine_state" value="new" checked> Brand new</label>
+        <label><input type="radio" name="machine_state" value="used"> Used</label>
+      </div>
+
+      <div class="calc-section-title">Revenue</div>
+      
+      <div class="radio-group">
+        <label><input type="radio" name="revenue_type" value="daily" checked> Daily revenue</label>
+        <label><input type="radio" name="revenue_type" value="drinks"> Number of drinks</label>
+      </div>
+
+      <div id="daily-revenue-group" class="input-group">
+        <label for="daily_revenue">Average daily revenue (€):</label>
+        <input type="number" id="daily_revenue" placeholder="e.g. 25" min="0">
+      </div>
+
+      <div id="drinks-group" class="input-group hidden">
+        <label for="drinks_per_day">Drinks sold per day:</label>
+        <input type="number" id="drinks_per_day" placeholder="e.g. 60" min="0">
+        <label for="price_per_drink" style="margin-top: 10px;">Average price per drink (€):</label>
+        <input type="number" id="price_per_drink" placeholder="e.g. 0.50" min="0" step="0.1">
+      </div>
+
+      <div class="calc-section-title">Monthly Expenses</div>
+      
+      <div class="input-group-row">
+        <div class="input-group half">
+          <label for="electricity">Electricity (€/mo):</label>
+          <input type="number" id="electricity" placeholder="e.g. 20" min="0">
+        </div>
+        <div class="input-group half">
+          <label for="consumables">Consumables (€/mo):</label>
+          <input type="number" id="consumables" placeholder="e.g. 100" min="0">
+        </div>
+      </div>
+      
+      <div class="input-group-row">
+        <div class="input-group half" id="maintenance-group" class="hidden">
+          <label for="maintenance">Parts & Maintenance (€/mo):</label>
+          <input type="number" id="maintenance" placeholder="e.g. 30" min="0">
+        </div>
+        <div class="input-group half">
+          <label for="rent">Location rent (€/mo):</label>
+          <input type="number" id="rent" placeholder="e.g. 50" min="0">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="other_expenses">Other expenses (optional, €/mo):</label>
+        <input type="number" id="other_expenses" placeholder="e.g. 15" min="0">
+      </div>
+
+    </div>
+
+    <div class="vending-calc-results">
+      <div class="result-box">
+        <span class="result-label">Monthly Profit:</span>
+        <span class="result-value" id="res_monthly">0.00 €</span>
+      </div>
+      <div class="result-box">
+        <span class="result-label">Yearly Profit:</span>
+        <span class="result-value" id="res_yearly">0.00 €</span>
+      </div>
+      <div class="result-box highlight-box">
+        <span class="result-label">Time to break even:</span>
+        <span class="result-value" id="res_roi">- months</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .vending-wrapper {
+    background-color: #f4ebd8; 
+    background-image: linear-gradient(rgba(244, 235, 216, 0.85), rgba(244, 235, 216, 0.85)), url('https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 20px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .interactive-title {
+    text-align: center;
+    font-size: 2.8em;
+    color: #3b2818;
+    margin: 0 0 30px 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 900;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+    cursor: default;
+  }
+  
+  .interactive-title:hover {
+    transform: scale(1.05) translateY(-5px);
+    text-shadow: 6px 6px 12px rgba(0,0,0,0.5);
+    color: #d2691e;
+  }
+
+  .vending-calc-container {
+    max-width: 550px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    overflow: hidden;
+  }
+  .vending-calc-header {
+    background: #4A3b32;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  .vending-calc-header h3 { margin: 0 0 5px 0; font-size: 22px; }
+  .vending-calc-header p { margin: 0; font-size: 14px; opacity: 0.9; }
+  .vending-calc-body { padding: 25px; }
+  .calc-section-title {
+    font-weight: bold;
+    color: #4A3b32;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    margin: 20px 0 10px 0;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+  .input-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+  .input-group-row { display: flex; gap: 15px; }
+  .half { flex: 1; }
+  .vending-calc-container label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .vending-calc-container input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .vending-calc-container input[type="number"]:focus { 
+    border-color: #d2691e; 
+    box-shadow: 0 0 5px rgba(210, 105, 30, 0.3);
+  }
+  .radio-group { margin-bottom: 15px; display: flex; gap: 15px; font-size: 14px; font-weight: 500;}
+  .hidden { display: none !important; }
+  
+  .vending-calc-results {
+    background: #fdfbf7;
+    padding: 25px;
+    border-top: 1px solid #eee;
+  }
+  .result-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+  .result-box:last-child { margin-bottom: 0; }
+  .result-label { color: #555; font-weight: 600; }
+  .result-value { font-weight: bold; color: #333; }
+  .highlight-box {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px dashed #ccc;
+  }
+  .highlight-box .result-value { color: #d2691e; font-size: 20px; }
+  .positive { color: #28a745 !important; }
+  .negative { color: #dc3545 !important; }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const inputs = document.querySelectorAll('.vending-calc-container input');
+    
+    const radioDaily = document.querySelector('input[value="daily"]');
+    const radioDrinks = document.querySelector('input[value="drinks"]');
+    const dailyGroup = document.getElementById('daily-revenue-group');
+    const drinksGroup = document.getElementById('drinks-group');
+
+    const radioNew = document.querySelector('input[value="new"]');
+    const radioUsed = document.querySelector('input[value="used"]');
+    const maintenanceGroup = document.getElementById('maintenance-group');
+    const maintenanceInput = document.getElementById('maintenance');
+
+    function toggleRevenueMode() {
+      if (radioDaily.checked) {
+        dailyGroup.classList.remove('hidden');
+        drinksGroup.classList.add('hidden');
+      } else {
+        dailyGroup.classList.add('hidden');
+        drinksGroup.classList.remove('hidden');
+      }
+      calculate();
+    }
+
+    function toggleMachineState() {
+      if (radioNew.checked) {
+        maintenanceGroup.classList.add('hidden');
+        maintenanceInput.value = '';
+      } else {
+        maintenanceGroup.classList.remove('hidden');
+      }
+      calculate();
+    }
+
+    radioDaily.addEventListener('change', toggleRevenueMode);
+    radioDrinks.addEventListener('change', toggleRevenueMode);
+    
+    radioNew.addEventListener('change', toggleMachineState);
+    radioUsed.addEventListener('change', toggleMachineState);
+
+    toggleMachineState();
+
+    function calculate() {
+      const investment = parseFloat(document.getElementById('investment').value) || 0;
+      
+      let monthlyRevenue = 0;
+      if (radioDaily.checked) {
+        const dailyRev = parseFloat(document.getElementById('daily_revenue').value) || 0;
+        monthlyRevenue = dailyRev * 30;
+      } else {
+        const drinks = parseFloat(document.getElementById('drinks_per_day').value) || 0;
+        const price = parseFloat(document.getElementById('price_per_drink').value) || 0;
+        monthlyRevenue = (drinks * price) * 30;
+      }
+
+      const electricity = parseFloat(document.getElementById('electricity').value) || 0;
+      const consumables = parseFloat(document.getElementById('consumables').value) || 0;
+      
+      const maintenance = radioUsed.checked ? (parseFloat(maintenanceInput.value) || 0) : 0;
+      
+      const rent = parseFloat(document.getElementById('rent').value) || 0;
+      const otherExpenses = parseFloat(document.getElementById('other_expenses').value) || 0;
+
+      const totalMonthlyCosts = electricity + consumables + maintenance + rent + otherExpenses;
+      const monthlyProfit = monthlyRevenue - totalMonthlyCosts;
+      const yearlyProfit = monthlyProfit * 12;
+
+      const elMonthly = document.getElementById('res_monthly');
+      const elYearly = document.getElementById('res_yearly');
+      const elRoi = document.getElementById('res_roi');
+
+      elMonthly.textContent = monthlyProfit.toFixed(2) + ' €';
+      elYearly.textContent = yearlyProfit.toFixed(2) + ' €';
+
+      elMonthly.className = 'result-value ' + (monthlyProfit > 0 ? 'positive' : (monthlyProfit < 0 ? 'negative' : ''));
+      elYearly.className = 'result-value ' + (yearlyProfit > 0 ? 'positive' : (yearlyProfit < 0 ? 'negative' : ''));
+
+      if (investment > 0 && monthlyProfit > 0) {
+        const monthsToROI = (investment / monthlyProfit).toFixed(1);
+        elRoi.textContent = monthsToROI + ' months';
+        elRoi.style.color = '#d2691e';
+      } else if (investment > 0 && monthlyProfit <= 0) {
+        elRoi.textContent = 'Never (operating at a loss)';
+        elRoi.style.color = '#dc3545';
+      } else {
+        elRoi.textContent = '- months';
+        elRoi.style.color = '';
+      }
+    }
+
+    inputs.forEach(input => {
+      input.addEventListener('input', calculate);
+    });
+  });
+</script>
