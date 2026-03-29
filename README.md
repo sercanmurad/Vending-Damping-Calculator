@@ -1,33 +1,22 @@
-# Vending-Damping-Calculator
-Vending Machine Calculator 
-Hey! I made this simple web calculator for my vending machine blog. The idea is to help people calculate if buying a coffee or vending machine is actually a good investment. 
+#Vending Machine ROI Calculator web tool
+A lightweight, single-file web app for calculating the profitability of a vending machine business. Built as a personal side project to practice real-world frontend development.
 
-It calculates your potential monthly and yearly profit, and tells you exactly how many months it will take to get your initial money back (ROI).
+Features
+📈 Calculates monthly profit, ROI and break-even point in real time
+🥧 Interactive doughnut chart for expense distribution
+📄 PDF report export with embedded Cyrillic-safe font (DejaVu Sans)
+🌐 Bilingual interface — Bulgarian / English
+💱 Currency toggle — EUR / USD
+💾 Auto-saves inputs to localStorage
+📱 Fully responsive — works on mobile and desktop
+⚡ Zero dependencies to install — single .html file
 
-## What it does
-* **Calculates profit in Euros (€).**
-* **Two revenue modes:** You can input your expected *daily revenue* directly, or input the *number of drinks* and price per drink.
-* **Smart expenses:** You can choose if the machine is "Brand New" or "Used". If you select New, it automatically hides the "Parts & Maintenance" cost because you have a warranty!
-* **Real-time math:** Everything calculates automatically as you type. No submit buttons needed.
-* **Cool UI:** Has an interactive hover title, a coffee bean background, and highlights the results in green or red depending on if you are making a profit or losing money.
+Tech Stack behind the project:
+- Vanilla JavaScript -> Bussiness logic and state management
+- Chart.js -> Chart for expenses and visualization
+- jsPDF -> PDF generation
+- DejaVu Sans -> Cyrillic suport for Bulgarian
+- CSS Grid -> Responsive layout
 
-## Technologies Used
-* HTML5
-* CSS3
-* Vanilla JavaScript
-
-I didn't use React or any heavy frameworks because I wanted this to be super lightweight and easy to embed into any blog platform (like WordPress or Blogger).
-
-## How to use it
-It's just one single file! 
-1. Open `index.html` (or whatever you named the file).
-2. Copy all the code.
-3. Paste it into a "Custom HTML" block on your website or blog post.
-4. That's literally it.
-
-## Future things to add maybe:
-- [ ] Mobile responsive tweaks (looks okay now, but could be better on really small screens)
-- [ ] Option to switch between different currencies (like USD or BGN)
-- [ ] Add a reset button
-
-Feel free to use the code or change the colors to match your own site! Let me know if you find any bugs. 🐛
+  ABOUT:
+*Built by a Computer Science student with hands-on experience running a real vending machine business. This project combines academic frontend knowledge with practical business logic from managing actual vending operations.
